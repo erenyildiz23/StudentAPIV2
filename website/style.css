@@ -1,0 +1,295 @@
+
+@font-face {
+    src: url(fonts\Poppins-LightItalic.ttf);
+    font-family:Poppins-LigthItalic;
+}
+@font-face {
+    src: url(fonts\Poppins-Medium.ttf);
+    font-family: Poppins-Medium;
+}
+@font-face {
+    font-family: rail;
+    src: url(fonts\Raleway-Italic-VariableFont_wght.ttf);
+}
+@keyframes slideleft{
+    from{transform: translateX(100px)}
+}
+@keyframes slideright{
+    to{transform: translateX(100px)}
+}
+@keyframes rotate{
+    50%{transform: rotatez(360deg);}
+}
+a:link{
+    color: blue;
+    font-size: larger;
+}
+a:hover{
+    color: brown;
+    font-size: 1.1em;
+}
+a:active{
+    color:rgb(255, 0, 221);
+    font-size: 1.1em;
+}
+a:visited{
+    color: yellowgreen;
+}
+body{
+    border: 3px solid;
+    display: flow-root ;
+    background-image: url(images/ray.png);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1{
+    border-style: solid;
+    border-width: 3px;
+    border-color: blue;
+    border-radius: 10px;
+    text-shadow:  3px 3px 5px blue;/* horizontal vertical blur*/
+    font-family:rail,'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: black;
+}
+
+/*#p1{
+    color: brown;
+}
+#p2{
+    color: aqua;
+}
+#p3{
+    color: chartreuse;
+}*/
+
+/*.odd{
+    color: red;
+}
+.even{
+    color:blue;
+}*/
+.odd{
+    background-color: aliceblue;
+
+}
+.even{
+    background-color: burlywood;
+}
+#p1{
+    border-bottom: 3px solid rgb(0, 255, 76);
+    border-top: 5px solid rgb(102, 0, 255);
+    border-left:  5px dotted rgb(0, 229, 255);
+    border-right: 5px dotted  rgb(0, 229, 255);
+    border-radius: 5px;
+    font-family:Poppins-LightItalic,'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+    color: rgb(239, 122, 101);
+    
+}
+#p2{
+    font-family:Poppins-LightItalic;
+    color: blue;
+    
+}
+#p3{
+    color: hsl(283, 90%, 64%)
+    
+}
+.box{
+    width: 200px;
+    height: 200px;
+    font-size: 1em;
+    box-shadow:  3px 3px 5px rgb(158, 41, 41);
+    border: 5px solid rgb(255, 0, 230);
+    height:auto;
+    width: 200px;
+    float: left;
+    padding: 25px;
+    text-align: center;
+    max-width: 25%;
+    min-height: 50%;
+}
+#box1{
+    background-color: aqua;
+    margin: 50px ;
+    transform : translateX(150px);
+    transform: scaleY(1.25);
+    animation-name: rotate;
+    animation-duration: 5s ;
+    animation-iteration-count: infinite;
+    
+}
+#box2{
+    background-color: rgb(226, 76, 43);
+    margin:auto;
+    transform: translateY(50%);
+    transform: translateX(50px);
+}
+#img1{
+    float:left ;
+    margin-right: 10px;
+    animation-name: slideleft;
+    animation-duration: 5s ;
+    animation-iteration-count: infinite;
+   
+}
+#img2{
+    float: right;
+    margin-left: 10px;
+    animation-name: slideright;
+    animation-duration: 5s ;
+    animation-iteration-count: infinite;
+}
+.container{
+    background-color: dimgray;
+    height: 50vh;
+}
+
+li:hover{
+    background-color: yellow;
+}
+
+
+
+#greeting p{
+    background-color: blue;
+    display:none;
+    padding:10px;
+}
+#greeting:hover p{
+    display:block;
+}
+
+h1::first-letter{ /*pseudo element*/
+    font-size: 2em;
+    font-style: italic;
+}
+
+P::selection{
+    color: white;
+    background-color:rgb(14, 230, 39) ;
+}
+
+#fruit li::before{
+    content:"🛫"
+}
+
+#apple::after{
+    content: "🍎";
+}
+#orange::after{
+    content: "🍊";
+}
+#banana::after{
+    content: "🍌";
+}
+
+#fruit li::marker{
+    content:"✓";
+    color:chartreuse;
+    font: size 1.2em;
+}
+
+.pagination{
+    text-align: center;
+}
+.pagination a{
+    color:black;
+    text-decoration: none;
+    padding:8px 15px;
+    display: inline-block;
+}
+
+.pagination a.active{
+    background-color:green ;
+    font-weight: bold;
+    border-radius: 5px;
+}
+.pagination a:hover:not(.active)
+{
+    background-color: burlywood;
+    border-radius: 5px;
+}
+
+.dropdown{
+    display: inline-block;
+}
+
+.dropdown button{
+    background-color: coral;
+    color:white;
+    padding:10px 15px;
+    border:none;
+    cursor:pointer;
+}
+.dropdown a{
+    display: block ;
+    color: black;
+    text-decoration: none;
+    padding:10px 15px;
+}
+.dropdown .content{
+    display: none;
+    position:absolute;
+    background-color: cornflowerblue;
+    min-width:100px;
+    box-shadow:2px 2px 5px black ;
+}
+.dropdown:hover .content{
+    display:block;
+}
+
+.dropdown:hover button{
+    background-color:gray;
+}
+.dropdown a:hover{
+    background-color: red;
+}
+
+h3{
+    background-color: aliceblue;
+    text-align: center;
+} 
+.navbar ul{
+    list-style-type:none;
+    background-color: darkturquoise;
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.navbar a{
+    color: white;
+    text-decoration:none ;
+    padding: 15px;
+    display:block;
+    text-align: center;
+    overflow: hidden;
+}
+
+.navbar a:hover{
+    background-color: hsl(285, 100%, 3%);
+}
+
+.navbar li{
+    float: left;
+}
+
+.gallery{
+    display: inline-block;
+    border: 5px solid hsla(57, 90%, 44%, 0.419);
+    margin: 5px;
+}
+
+.gallery .description{
+    background-color: azure;
+    padding: 10px;
+    text-align: center;
+}
+.gallery:hover{
+    border: 5px solid hsla(128, 92%, 47%, 0.555);
+}
+
