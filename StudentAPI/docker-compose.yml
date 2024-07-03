@@ -1,0 +1,31 @@
+version: '3.3'
+
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: studentdb
+      POSTGRES_USER: eren
+      POSTGRES_PASSWORD: 230198
+    ports:
+      - "5432:5432"
+
+  backend:
+    build:
+      context: ./studentapi
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/studentdb
+      SPRING_DATASOURCE_USERNAME: eren
+      SPRING_DATASOURCE_PASSWORD: 230198
+
+  frontend:
+    build:
+      context: ./student-api-client
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
