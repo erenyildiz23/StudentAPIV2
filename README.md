@@ -131,6 +131,92 @@ StudentAPI/
     ├── package.json            # npm configuration
     └── .gitignore
  ```
+## Running the Application with Docker
+
+### Docker Configuration
+
+- **Dockerfile for Backend (`studentapi/Dockerfile`):**
+    ```dockerfile
+    FROM maven:3.8.4-openjdk-17-slim AS backend-build
+    WORKDIR /app
+    COPY studentapi/pom.xml .
+    COPY studentapi/src ./src
+    RUN mvn clean package -DskipTests
+
+    FROM openjdk:17-jdk-alpine
+    WORKDIR /app
+    COPY --from=backend-build /app/target/*.jar ./app.jar
+    ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+    ```
+
+- **Dockerfile for Frontend (`student-api-client/Dockerfile`):**
+    ```dockerfile
+    FROM node:18 AS builder
+    WORKDIR /app
+    COPY student-api-client/package*.json ./
+    RUN npm install
+    COPY student-api-client .
+    RUN npm run build
+
+    FROM nginx:alpine
+    COPY --from=builder /app/build /usr/share/nginx/html
+    EXPOSE 80
+    CMD ["nginx", "-g", "daemon off;"]
+    ```
+
+- **Docker Compose Configuration (`docker-compose.yml`):**
+    ```yaml
+    version: '3.8'
+
+    services:
+      backend:
+        build:
+          context: .
+          dockerfile: studentapi/Dockerfile
+        ports:
+          - "8080:8080"
+        environment:
+          SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/studentdb
+          SPRING_DATASOURCE_USERNAME: username
+          SPRING_DATASOURCE_PASSWORD: password
+        depends_on:
+          - db
+
+      frontend:
+        build:
+          context: .
+          dockerfile: student-api-client/Dockerfile
+        ports:
+          - "3000:80"
+        depends_on:
+          - backend
+
+      db:
+        image: postgres:13
+        environment:
+          POSTGRES_DB: studentdb
+          POSTGRES_USER: username
+          POSTGRES_PASSWORD: password
+        ports:
+          - "5432:5432"
+    ```
+
+### Running the Application
+
+1. **Ensure Docker and Docker Compose are installed on your system.**
+
+2. **Navigate to the project root directory:**
+    ```sh
+    cd /path/to/StudentAPI
+    ```
+
+3. **Build and run the Docker containers:**
+    ```sh
+    docker-compose up --build
+    ```
+
+4. **The backend will be available at `http://localhost:8080` and the frontend at `http://localhost:3000`.**
+
 ## Contributing
 
 If you would like to contribute to this project, please follow these steps:
