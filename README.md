@@ -110,27 +110,37 @@ StudentAPI/
 │
 ├── studentapi/                 # Spring Boot backend
 │   ├── src/main/java/com/student/studentapi/
+│   │   ├── config/             # Configuration classes
 │   │   ├── controller/         # REST controllers
 │   │   ├── dto/                # Data Transfer Objects
 │   │   ├── entity/             # JPA entities
 │   │   ├── exception/          # Exception handling
-│   │   ├── repo/               # Repositories
+│   │   ├── repository/         # Repositories
 │   │   ├── security/           # Security configuration
 │   │   ├── service/            # Services
 │   │   └── StudentapiApplication.java  # Main Spring Boot application
 │   ├── src/main/resources/
 │   │   └── application.properties
+│   ├── src/test/java/com/student/studentapi/  # Test classes
+│   ├── Dockerfile              # Docker configuration for backend
 │   └── pom.xml                 # Maven configuration
 │
 └── student-api-client/         # React.js frontend
     ├── public/
-    └── src/
-        ├── components/         # React components
-        ├── App.js              # Main React component
-        └── index.js            # React entry point
+    ├── src/
+    │   ├── components/         # React components
+    │   ├── App.css             # Main CSS file
+    │   ├── App.js              # Main React component
+    │   ├── App.test.js         # Test for App component
+    │   ├── index.css           # CSS for index file
+    │   ├── index.js            # React entry point
+    │   ├── reportWebVitals.js  # Performance measurement
+    │   └── setupTests.js       # Setup tests
+    ├── Dockerfile              # Docker configuration for frontend
     ├── package.json            # npm configuration
-    └── .gitignore
- ```
+    └── .gitignore              # gitignore file for frontend
+```
+
 ## Running the Application with Docker
 
 ### Docker Configuration
